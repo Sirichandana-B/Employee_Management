@@ -1,0 +1,102 @@
+<div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Employee Management</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#addEmployee" type="submit">Add Employee</button>
+          </div>
+        </div>
+    </nav>
+  
+  <!-- Add Employee modal -->
+  <div class="modal fade" id="addEmployee" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">ADD</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form (ngSubmit)="handleSubmit($event)" [formGroup]="employeeForm">
+                <div class="mb-3">
+                    <label for="id" class="form-label"> ID </label>
+                    <input type="number" class="form-control" id="id" #id />
+                </div>
+                <div class="mb-3">
+                    <label for="username" class="form-label"> USERNAME</label>
+                    <input type="text" class="form-control" id="name" #name />
+                </div>
+                <div class="mb-3">
+                    <label for="name" class="form-label"> NAME</label>
+                    <input type="text" class="form-control" id="price" #price />
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label"> EMAIL</label>
+                    <input type="email" class="form-control" id="price" #price />
+                </div>
+                <div class="mb-3">
+                    <label for="gender" class="form-label"> GENDER</label>
+                    <input type="text" class="form-control" id="price" #price />
+                </div>
+                <div class="mb-3">
+                    <label for="phone_number" class="form-label"> PHONE NUMBER</label>
+                    <input type="number" class="form-control" id="price" #price />
+                </div>
+                <div class="mb-3">
+                    <label for="designation" class="form-label"> DESIGNATION </label>
+                    <input type="text" class="form-control" id="price" #price />
+                </div>
+                <div class="mb-3">
+                    <label for="complete_address" class="form-label"> ADDRESS </label>
+                    <input type="text" class="form-control" id="price" #price />
+                </div>
+                
+                <div class="modal-footer">
+                  <button type="submit" class="btn btn-primary" (click)="handleSubmit($event)">Submit</button>
+                </div>
+
+            </form>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+<div class="getdata" align="center"><br>
+  <button (click)="getEmpData()" class="btn btn-primary"> GET </button>
+</div>
+  
+  <div class="container"><br>
+    <table class="table table-bordered table-striped" >
+      <thead>
+        <tr>
+          <th scope="col">ID</th>
+          <th scope="col">USERNAME</th>
+          <th scope="col">NAME</th>
+          <th scope="col">EMAIL</th>
+          <th scope="col">GENDER</th>
+          <th scope="col">PHONE NUMBER</th>
+          <th scope="col">DESIGNATION</th>
+          <th scope="col">ADDRESS</th>
+          <th scope="col">Action</th>
+        </tr>
+      </thead>
+      <tbody *ngFor="let emp of empData" class="table table-bordered table-striped">
+        <tr>
+          <td align="center">{{ emp.id }}</td>
+          <td align="center">{{ emp.username }}</td>
+          <td align="center">{{ emp.name }}</td>
+          <td align="center">{{ emp.email }}</td>
+          <td align="center">{{ emp.gender }}</td>
+          <td align="center">{{ emp.phone_number }}</td>
+          <td align="center">{{ emp.designation }}</td>
+          <td align="center">{{ emp.complete_address }}</td>
+          <td align="center"><button>Edit</button></td>
+          <td align="center"><button (click)="handledelete($event)">Delete</button></td>
+        </tr>
+      </tbody>
+    </table>
+</div>
